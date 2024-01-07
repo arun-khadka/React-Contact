@@ -5,7 +5,6 @@ import { deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../config/firebase'
 import AddAndUpdateContact from './AddAndUpdateContact'
 import useDisclouse from '../hooks/useDisclouse'
-import Modal from './Modal'
 import { toast } from 'react-toastify'
 
 const ContactCard = ( {contact} ) => {
@@ -22,12 +21,11 @@ const ContactCard = ( {contact} ) => {
 
   return (
     <>
-    <div className='mb-2'>
          <div 
            key={contact.id}
-           className='bg-green rounded-lg flex items-center justify-between p-2'>
+           className='bg-green rounded-md flex items-center justify-between p-2'>
             <div className='flex gap-2'>
-              <HiOutlineUserCircle  onClick={Modal} className='text-4xl text-white'/>
+              <HiOutlineUserCircle  onClick={onOpen} className='text-4xl text-white'/>
                 <div className=''> 
                   <h2 className='text-white font-medium'>{contact.name}</h2>
                   <p className='text-white text-sm'>{contact.email}</p>
@@ -48,7 +46,6 @@ const ContactCard = ( {contact} ) => {
            isUpdate
            isOpen={isOpen} 
            onClose={onClose}/>
-    </div>
     </>
   )
 }

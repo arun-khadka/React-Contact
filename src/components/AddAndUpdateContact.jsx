@@ -5,7 +5,8 @@ import { addDoc, collection, updateDoc, doc } from 'firebase/firestore'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
-const contactSchemaValidation = Yup.object({
+const contactSchemaValidation = Yup.object().shape(
+  {
   name: Yup.string().required('Name required'), 
   email: Yup.string().email('Invalid Email').required('Email is Required    '),
 });
@@ -16,7 +17,7 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
     try {
       const contactRef = collection(db, "contacts");
       await addDoc(contactRef, contact);
-      onclose();
+      onClose();
       toast.success("Contact Added Successfully");
     } catch (error) {
       console.log(error);   
@@ -53,7 +54,7 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
           onSubmit={(values) => {
             console.log(values);
             isUpdate ? 
-              updateContacts(values, id) 
+              updateContacts(values, contact.id) 
             : 
               addContacts(values);
           }} 

@@ -6,10 +6,7 @@ const Modal = ({isOpen, onClose, children}) => {
 <> 
     {isOpen && (
     
-    <div  
-     className=' grid place-items-center z-40 h-screen w-screen absolute top-0 
-     backdrop-blur'
-    >
+    <div className=' grid place-items-center z-40 h-screen w-screen absolute top-0 backdrop-blur'>
       <div className='relative z-50 min-h-[250px] mix-w-[80%] bg-white p-1 m-auto'> 
         <div className='flex justify-end'>
           <AiOutlineClose 
