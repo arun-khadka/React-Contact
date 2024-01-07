@@ -5,7 +5,7 @@ import {AiFillPlusCircle} from 'react-icons/ai'
 import {collection, getDocs, onSnapshot} from 'firebase/firestore'
 import {db} from "./config/firebase"
 import AddAndUpdateContact from './components/AddAndUpdateContact'
-import useDisclose from './hooks/useDisclose'
+import useDisclouse from './hooks/useDisclouse'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ContactCard from './components/ContactCard'
@@ -14,7 +14,7 @@ import NotFoundContact from './components/NotFoundContact'
 const App = () => {
 const [contacts, setContacts] = useState([]);
 
-const {onOpen, onClose, isOpen} = useDisclose();
+const {onOpen, onClose, isOpen} = useDisclouse();
 
 useEffect(() => {
   const getContacts = async () => {
@@ -77,7 +77,7 @@ const filterContacts = (e) => {
 
          <AiFillPlusCircle 
            onClick={onOpen}
-           className='text-5xl cursor-pointer text-white '
+           className='text-5xl cursor-pointer text-green '
          />
       </div>
       <div className='mt-3 flex flex-col gap-3'> 

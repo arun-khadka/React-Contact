@@ -4,7 +4,7 @@ import { IoMdTrash } from 'react-icons/io'
 import { deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../config/firebase'
 import AddAndUpdateContact from './AddAndUpdateContact'
-import useDisclouse from '../hooks/useDisclose'
+import useDisclouse from '../hooks/useDisclouse'
 import Modal from './Modal'
 import { toast } from 'react-toastify'
 
