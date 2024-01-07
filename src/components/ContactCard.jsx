@@ -4,11 +4,11 @@ import { IoMdTrash } from 'react-icons/io'
 import { deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../config/firebase'
 import AddAndUpdateContact from './AddAndUpdateContact'
-import useDisclouse from '../hooks/useDisclouse'
+import useDisclosure from '../hooks/useDisclosure'
 import { toast } from 'react-toastify'
 
 const ContactCard = ( {contact} ) => {
-  const {onOpen, onClose, isOpen} = useDisclouse();
+  const {onOpen, onClose, isOpen} = useDisclosure();
   
   const deleteContact = async (id) => {
     try {
@@ -25,7 +25,7 @@ const ContactCard = ( {contact} ) => {
            key={contact.id}
            className='bg-green rounded-md flex items-center justify-between p-2'>
             <div className='flex gap-2'>
-              <HiOutlineUserCircle  onClick={onOpen} className='text-4xl text-white'/>
+              <HiOutlineUserCircle className='text-4xl text-white'/>
                 <div className=''> 
                   <h2 className='text-white font-medium'>{contact.name}</h2>
                   <p className='text-white text-sm'>{contact.email}</p>

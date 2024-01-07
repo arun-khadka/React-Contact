@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom'
 import { AiOutlineClose } from 'react-icons/ai'
 
+
 const Modal = ({isOpen, onClose, children}) => {
   return createPortal(
 <> 

@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-
-const useDisclouse = () => {
+const useDisclosure = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onOpen = () => {
@@ -14,4 +13,4 @@ const useDisclouse = () => {
   return (onOpen, onclose, isOpen)
 }
 
-export default useDisclouse
+export default useDisclosure

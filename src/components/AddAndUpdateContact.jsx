@@ -5,11 +5,15 @@ import { addDoc, collection, updateDoc, doc } from 'firebase/firestore'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
+
 const contactSchemaValidation = Yup.object().shape(
   {
   name: Yup.string().required('Name required'), 
-  email: Yup.string().email('Invalid Email').required('Email is Required    '),
+  email: Yup.string().email('Invalid Email').required('Email is Required').test('startsWithLowercase', 'Email must start with a lowercase letter', (value) => {
+    return /^[a-z]/.test(value);
+  }),
 });
+
 
 const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
 
@@ -24,10 +28,13 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
     }
   }
 
-  const updateContacts = async (contact, id) => {
+  const updateContacts = async (values, id) => {
     try {
       const contactRef = doc(db, "contacts", id);
-      await updateDoc(contactRef, contact);
+      await updateDoc(contactRef, {
+        name: values.name,
+        email: values.email,
+      });
       onClose();
       toast.success("Contact Updated Successfully");
     } catch (error) {
@@ -54,28 +61,26 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
           onSubmit={(values) => {
             console.log(values);
             isUpdate ? 
-              updateContacts(values, contact.id) 
-            : 
-              addContacts(values);
-          }} 
+              updateContacts(values, contact.id) : addContacts(values);
+            }} 
         >
-            <Form className='flex flex-col gap-3'>
-              <div className='flex flex-col pl-6'>
+            <Form className='flex flex-col gap-4 pr-8'>
+              <div className='flex flex-col pl-9'>
                   <label htmlFor="name">Name</label>
-                  <Field name='name' className='border h-10 w-[90%] rounded-md pl-2'/>
+                  <Field name='name' className='border h-10 w-[100%] rounded-md pl-5'/>
                   <div className='text-xs text-red-500'>
                     <ErrorMessage name='name'/>
                   </div>
               </div>
-              <div className='flex flex-col pl-6'>
+              <div className='flex flex-col pl-9'>
                   <label htmlFor="email">Email</label>
-                  <Field name='email' className='border h-10 rounded-md pl-2 w-[90%] text-md'/>
+                  <Field name='email' className='border h-10 rounded-md pl-5 w-[100%] text-md'/>
                   <div className='text-xs text-red-500'>
                     <ErrorMessage name='email'/>
                   </div>
               </div>
-              <button className='border mt-3 bg-green text-white h-10 w-[40%] rounded-md self-end items-center mr-7 '>
-                { isUpdate ? 'update' : 'add' }  Contact
+              <button className='border mt-2 bg-green text-white h-10 w-[86%] rounded-md self-end items-center mr-0 '>
+                { isUpdate ? 'Update' : 'Add' }  Contact
               </button>
             </Form>
         </Formik>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const NotFoundContact = () => {
   return (
-    <div className='flex h-[70%] justify-center items-center gap-4 '>
+    <div className='flex h-[30vh] justify-center items-center gap-8'>
         <div className='p-10'> 
         <img src="images/contact.svg" alt=""/>
         </div>
