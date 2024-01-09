@@ -8,13 +8,11 @@ import * as Yup from 'yup'
 
 const contactSchemaValidation = Yup.object().shape({
   name: Yup.string()
-    .required('Name required')
-    .transform((value) => {
-      return value.charAt(0).toUpperCase() + value.slice(1);
-    }),
+    .required('Name required'),
 
   email: Yup.string()
    .email('Invalid Email')
+   .matches(/^[A-Z0-9._%+-]+@gmail\.com$/i, 'Must be a gmail address') 
    .required('Email is Required')
 });
 
