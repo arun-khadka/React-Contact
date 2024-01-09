@@ -4,8 +4,9 @@ import { IoMdTrash } from 'react-icons/io'
 import { deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../config/firebase'
 import AddAndUpdateContact from './AddAndUpdateContact'
-import useDisclosure from '../hooks/useDisclosure'
+import { useDisclosure } from '@chakra-ui/react'
 import { toast } from 'react-toastify'
+
 
 const ContactCard = ( {contact} ) => {
   const {onOpen, onClose, isOpen} = useDisclosure();
@@ -23,7 +24,7 @@ const ContactCard = ( {contact} ) => {
     <>
          <div 
            key={contact.id}
-           className='bg-green rounded-md flex items-center justify-between p-2'>
+           className='bg-green rounded-md flex items-center justify-between p-3'>
             <div className='flex gap-2'>
               <HiOutlineUserCircle className='text-4xl text-white'/>
                 <div className=''> 
@@ -32,20 +33,25 @@ const ContactCard = ( {contact} ) => {
                 </div>
             </div>
             <div className='flex gap-2'> 
-              <RiEditCircleLine
+
+              <RiEditCircleLine 
                onClick={onOpen} 
                className='text-dark-yellow text-2xl cursor-pointer'/>
 
               <IoMdTrash 
                onClick={() => deleteContact (contact.id)} 
                className='text-red text-2xl cursor-pointer'/>
+
             </div>
           </div>
-          <AddAndUpdateContact 
-           contact={contact} 
-           isUpdate
-           isOpen={isOpen} 
-           onClose={onClose}/>
+          {isOpen && (
+            <AddAndUpdateContact 
+            contact={contact} 
+            isUpdate
+            isOpen={isOpen} 
+            onClose={onClose}
+            />
+           )}    
     </>
   )
 }

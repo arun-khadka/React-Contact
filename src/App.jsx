@@ -78,13 +78,13 @@ const filterContacts = (e) => {
 
          <AiFillPlusCircle 
            onClick={onOpen}
-           className='text-5xl cursor-pointer text-green '
+           className='text-4xl cursor-pointer text-green '
          />
       </div>
       <div className='mt-4 flex flex-col gap-3'> 
         {contacts.length <= 0 ? (
         <NotFoundContact/>
-        ) : (
+        ) : ( 
          contacts.map((contact) => (
          <ContactCard key={contact.id} contact={contact}/>
         ))
