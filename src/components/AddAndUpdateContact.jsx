@@ -27,11 +27,18 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
           email: contact.email.toLowerCase(),
         };
 
-      
       const contactRef = collection(db, "contacts");
       await addDoc(contactRef, capitalizedContact);
       onClose();
-      toast.success("Contact Added Successfully");
+      toast.success("Contact Added Successfully",{
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",});
     } catch (error) {
       console.log(error);   
     }
@@ -45,7 +52,15 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
         email: values.email,
       });
       onClose();
-      toast.success("Contact Updated Successfully");
+      toast.success("Contact Updated Successfully",{
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false, 
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",});
     } catch (error) {
       console.log(error);   
     }
