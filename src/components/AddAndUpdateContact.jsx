@@ -43,7 +43,7 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
     try {
       const contactRef = doc(db, "contacts", id);
       await updateDoc(contactRef, {
-        name: values.name,
+        name: values.name.charAt(0).toUpperCase() + values.name.slice(1),
         email: values.email,
       });
       onClose();
