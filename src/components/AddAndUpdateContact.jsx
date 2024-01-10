@@ -21,7 +21,7 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
 
   const addContacts = async (contact) => {
     try {
-        const capitalizedContact = {
+        const capitalizedContact ={
           ...contact,
           name: contact.name.charAt(0).toUpperCase() + contact.name.slice(1),
           email: contact.email.toLowerCase(),
@@ -49,7 +49,7 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
       const contactRef = doc(db, "contacts", id);
       await updateDoc(contactRef, {
         name: values.name.charAt(0).toUpperCase() + values.name.slice(1),
-        email: values.email,
+        email: values.email.toLowerCase(),
       });
       onClose();
       toast.success("Contact Updated Successfully",{
@@ -83,7 +83,7 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
             }
           }
           onSubmit={(values) => {
-            console.log(values);
+            // console.log(values);
             isUpdate ? 
               updateContacts(values, contact.id) : addContacts(values);
             }} 
