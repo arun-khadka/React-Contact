@@ -32,7 +32,7 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
       onClose();
       toast.success("Contact Added Successfully",{
         position: "bottom-center",
-        autoClose: 2000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -54,7 +54,7 @@ const AddAndUpdateContact = ({isOpen, onClose, isUpdate, contact}) => {
       onClose();
       toast.success("Contact Updated Successfully",{
         position: "bottom-center",
-        autoClose: 2000,
+        autoClose: 3000,
         hideProgressBar: false, 
         closeOnClick: true,
         pauseOnHover: true,
