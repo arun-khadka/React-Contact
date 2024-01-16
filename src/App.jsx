@@ -13,8 +13,8 @@ import { useDisclosure } from '@chakra-ui/react'
 
 
 const App = () => {
-const [contacts, setContacts] = useState([]);
 
+const [contacts, setContacts] = useState([]);
 const {onOpen, onClose, isOpen} = useDisclosure();
 
 useEffect(() => {
@@ -56,10 +56,7 @@ const filterContacts = (e) => {
         )
         setContacts(filteredContacts);
         return filteredContacts;
-      });
-
-
-      
+      })      
 }
 
   return (

@@ -22,7 +22,7 @@ const ContactCard = ( {contact} ) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",})
+        theme: "light",})
     } catch (error) {
       console.log(error);  
     }
