@@ -10,7 +10,7 @@ const useDisclosure = () => {
     setIsOpen(false);
   }
 
-  return (onOpen, onclose, isOpen)
+  return (onOpen, onClose, isOpen)
 }
 
 export default useDisclosure
